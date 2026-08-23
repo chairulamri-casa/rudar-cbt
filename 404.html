@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>RUDAR</title>
+    <script>
+      // Trik SPA-GitHub-Pages: GitHub Pages tidak punya "server rewrite" seperti
+      // Netlify (_redirects). Jadi kalau ada yang buka link langsung ke /ujian,
+      // /cetak-kartu, dsb, GitHub akan mencari file itu secara harfiah dan gagal
+      // (404). File 404.html ini otomatis dijalankan GitHub Pages untuk SEMUA
+      // alamat yang tidak ditemukan sebagai file — di sini kita simpan alamat
+      // aslinya, lalu redirect ke index.html. index.html lalu membaca simpanan
+      // itu dan mengembalikan alamatnya sebelum React Router aktif.
+      var basePath = '/rudar-cbt/';
+      var path = window.location.pathname + window.location.search + window.location.hash;
+      sessionStorage.setItem('rudar_redirect_path', path);
+      window.location.replace(window.location.origin + basePath);
+    </script>
+  </head>
+  <body></body>
+</html>
